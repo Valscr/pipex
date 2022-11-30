@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2022/11/30 22:30:57 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/01 00:22:58 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ int	main(int argc, char *argv[], char *envp[])
 	if (data.pid2 == 0)
 		second_child(data, argv, envp);
 	close_pipes(&data);
-	if (check_access(data.cmd_paths, argv, argc))
-		waitpid(-1, NULL, 0);
+	check_access(data.cmd_paths, argv, argc);
 	parent_free(&data);
 	return (0);
 }

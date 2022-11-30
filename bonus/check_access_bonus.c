@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:08:33 by valentin          #+#    #+#             */
-/*   Updated: 2022/11/30 23:01:46 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/01 00:28:53 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,11 @@ int	check_access(char **paths, char **argv, int argc)
 	{
 		cmd_args = ft_split(argv[2 + i], ' ');
 		if (get_cmd_access(paths, cmd_args[0]))
-		{
-			child_free(cmd_args);
-			return (1);
-		}
+			waitpid(0, NULL, 0);
 		child_free(cmd_args);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 int	get_cmd_access(char **paths, char *cmd)

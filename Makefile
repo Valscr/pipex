@@ -6,7 +6,7 @@
 #    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 14:55:08 by valentin          #+#    #+#              #
-#    Updated: 2022/11/30 23:08:13 by valentin         ###   ########.fr        #
+#    Updated: 2022/12/01 00:29:26 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ $(NAME): ${OBJS} maker
 
 $(NAME2): ${OBJS2} maker
 		$(CC) -o $(NAME) $(OBJS2) $(CFLAGS) $(LIBSFLAGS)
-		@echo " [ OK ] Pipex is ready !"	
+		@echo " [ OK ] Pipex with bonus is ready !"	
 
 $(DIR_OBJ)%.o : $(SRC_DIR)%.c
 		@mkdir -p $(DIR_OBJ)

@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2022/11/30 22:54:58 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/01 00:27:05 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,7 @@ int	main(int argc, char *argv[], char *envp[])
 	data.cmd_paths = ft_split(data.paths, ':');
 	loop_pipe(data, argv, envp, argc);
 	close_pipes(&data, argc - 3);
-	if (check_access(data.cmd_paths, argv, argc))
-		waitpid(-1, NULL, 0);
+	check_access(data.cmd_paths, argv, argc);
 	parent_free(&data);
 	return (0);
 }
