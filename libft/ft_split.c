@@ -6,14 +6,14 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 01:36:01 by vescaffr          #+#    #+#             */
-/*   Updated: 2022/05/25 15:11:40 by valentin         ###   ########.fr       */
+/*   Updated: 2022/08/21 00:11:56 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int	ft_countdest(char const *s, char c)
+int	ft_countdest(char *s, char c)
 {
 	int	i;
 	int	j;
@@ -40,7 +40,7 @@ int	ft_countdest(char const *s, char c)
 	return (j);
 }
 
-static char	*ft_filldest(char const *s, int i, int j)
+static char	*ft_filldest(char *s, int i, int j)
 {
 	char	*dest;
 	int		n;
@@ -59,7 +59,7 @@ static char	*ft_filldest(char const *s, int i, int j)
 	return (dest);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**dest;
 	int		j;

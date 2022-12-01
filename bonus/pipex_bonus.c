@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2022/12/01 00:27:05 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/01 01:56:42 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ int	loop_pipe(t_data data, char *argv[], char *envp[], int argc)
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_data	data;
+	int		i;
 
+	i = 0;
 	if (argc < 5)
 		return (write_error("Invalid number of arguments\n"));
 	init(&data, argc);
@@ -100,7 +102,8 @@ int	main(int argc, char *argv[], char *envp[])
 	data.cmd_paths = ft_split(data.paths, ':');
 	loop_pipe(data, argv, envp, argc);
 	close_pipes(&data, argc - 3);
-	check_access(data.cmd_paths, argv, argc);
+	while (i++ < argc - 3)
+		waitpid(0, NULL, 0);
 	parent_free(&data);
 	return (0);
 }

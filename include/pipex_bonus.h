@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:39:58 by valentin          #+#    #+#             */
-/*   Updated: 2022/11/30 23:01:10 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/01 01:47:09 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_data {
 	char		*paths;
 	char		**cmd_paths;
 	int			count;
-	int			waitpid;
 }				t_data;
 
 char		*find_path(char **envp);
