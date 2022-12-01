@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:15:17 by valentin          #+#    #+#             */
-/*   Updated: 2022/11/30 22:54:54 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/01 02:22:43 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,5 @@ void	init(t_data	*data, int argc)
 	data->outfile = 0;
 	data->tube = malloc(sizeof(int) * (2 * (argc - 3 - 1)));
 	data->count = 0;
-	data->waitpid = 0;
 	return ;
 }

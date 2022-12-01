@@ -6,12 +6,15 @@
 #    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 14:55:08 by valentin          #+#    #+#              #
-#    Updated: 2022/12/01 01:16:14 by valentin         ###   ########.fr        #
+#    Updated: 2022/12/01 03:00:15 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 NAME2 = pipex_bonus
+
+COLOUR_GREEN=\033[0;32m
+COLOUR_END=\033[0m
 
 C_FILES = pipex.c utils.c check_access.c
 
@@ -41,11 +44,11 @@ RM		= rm -f
 
 $(NAME): ${OBJS} maker
 		@$(CC) -o $(NAME) $(OBJS) $(CFLAGS) $(LIBSFLAGS)
-		@echo " [ \x1b[32mOK\\x1b[0m ] Pipex"
+		@echo " [ $(COLOUR_GREEN)OK$(COLOUR_END) ] ./pipex"
 		
 $(NAME2): ${OBJS2} maker
 		@$(CC) -o $(NAME) $(OBJS2) $(CFLAGS) $(LIBSFLAGS)
-		@echo " [ \x1b[32mOK\\x1b[0m ] Pipex bonus"
+		@echo " [ $(COLOUR_GREEN)OK$(COLOUR_END) ] ./pipex (bonus)"
 
 $(DIR_OBJ)%.o : $(SRC_DIR)%.c
 		@mkdir -p $(DIR_OBJ)
@@ -60,16 +63,15 @@ all: ${NAME}
 bonus: ${NAME2}
 
 maker:
-		@make -C libft
+		@make -s -C libft
 		@echo "[ OK ] libft"
 
 clean:
 		@${RM} -rf ${DIR_OBJ}
 		@${RM} -rf ${DIR_OBJ2}
-		@make clean -C libft
+		@make fclean -s -C libft
 
 fclean:	clean
-		@make fclean -C libft
 		@${RM} ${NAME}
 		@${RM} ${NAME2}
 		@echo " [ OK ] pipex clean"

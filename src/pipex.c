@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2022/12/01 01:59:02 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/01 02:45:17 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	first_child(t_data data, char *argv[], char *envp[])
 			write_error(data.cmd_args[0]);
 		write_error(": command not found\n");
 		child_free(&data);
+		parent_free(&data);
 		exit(1);
 	}
 	execve(data.cmd, data.cmd_args, envp);
@@ -56,6 +57,7 @@ void	second_child(t_data data, char *argv[], char *envp[])
 			write_error(data.cmd_args[0]);
 		write_error(": command not found\n");
 		child_free(&data);
+		parent_free(&data);
 		exit(1);
 	}
 	execve(data.cmd, data.cmd_args, envp);
