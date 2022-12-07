@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 22:04:18 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/07 22:22:42 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/07 23:37:51 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ char	*ft_cut_dest(char *dest)
 
 char	*new_save(char *str)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -62,8 +62,8 @@ char	*new_save(char *str)
 
 char	*get_next(char *save, int fd)
 {
-	int			bytes;
-	char		*dest;
+	int		bytes;
+	char	*dest;
 
 	dest = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!dest)
@@ -84,10 +84,15 @@ char	*get_next(char *save, int fd)
 	return (save);
 }
 
-int	get_next_line(int fd, char **str)
+int	get_next_line(int fd, char **str, int last)
 {
-	static char		*save;
+	static char	*save;
 
+	if (last == 1)
+	{
+		free(save);
+		return (0);
+	}
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (-1);
 	save = get_next(save, fd);

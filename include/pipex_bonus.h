@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:39:58 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/07 22:19:12 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/07 23:21:09 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ void		init(t_data	*data, int argc);
 int			write_error(char *str);
 int			write_perror(char *str);
 void		pipe_free(t_data *data);
-int			check_access(char **paths, char **argv, int argc);
-int			get_cmd_access(char **paths, char *cmd);
-int			get_next_line(int fd, char **str);
+int			get_next_line(int fd, char **str, int last);
 char		*get_next(char *save, int fd);
 char		*new_save(char *str);
 char		*ft_cut_dest(char *dest);

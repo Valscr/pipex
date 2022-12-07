@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:39:58 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/01 15:56:54 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/07 22:43:24 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,5 @@ char		*get_cmd(char **paths, char *cmd);
 void		first_child(t_data data, char *argv[], char *envp[]);
 void		second_child(t_data data, char *argv[], char *envp[]);
 int			write_error(char *str);
-int			check_access(char **paths, char **argv, int argc);
-int			get_cmd_access(char **paths, char *cmd);
-void		child_free2(char **cmd_args);
 
 #endif

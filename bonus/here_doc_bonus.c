@@ -6,27 +6,31 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 22:10:16 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/07 22:18:56 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/07 23:43:48 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex_bonus.h"
 
-int	check_heredoc(char	*str, t_data *data)
+int	check_heredoc(char *str, t_data *data)
 {
 	char	*heredoc;
 	int		i;
 
 	i = 0;
 	heredoc = malloc(sizeof(char) * 9);
-	heredoc = "here_doc\0";
+	ft_strlcpy(heredoc, "here_doc", 9);
 	data->heredoc = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] != heredoc[i])
+		{
+			free(heredoc);
 			return (0);
+		}
 		i++;
 	}
+	free(heredoc);
 	data->heredoc++;
 	return (1);
 }
@@ -42,10 +46,13 @@ void	here_doc(char *argv, t_data *data)
 	while (1)
 	{
 		write(1, "heredoc> ", 9);
-		if (get_next_line(0, &buf) < 0)
+		if (get_next_line(0, &buf, 0) < 0)
 			exit(1);
 		if (!ft_strncmp(argv, buf, ft_strlen(argv) + 1))
+		{
+			get_next_line(0, &buf, 1);
 			break ;
+		}
 		write(file, buf, ft_strlen(buf));
 		write(file, "\n", 1);
 		free(buf);
@@ -54,8 +61,5 @@ void	here_doc(char *argv, t_data *data)
 	close(file);
 	data->infile = open(".heredoc_tmp", O_RDONLY);
 	if (data->infile < 0)
-	{
 		unlink(".heredoc_tmp");
-		return ;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:15:17 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/07 22:20:21 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/07 22:47:59 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	close_pipes(t_data *data, int len)
 	int	i;
 
 	i = 0;
-	while (i < 2 * (len - 1))
+	while (i < len)
 		close(data->tube[i++]);
 }
 

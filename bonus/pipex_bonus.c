@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2022/12/07 22:22:59 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/07 23:20:20 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int	main(int argc, char *argv[], char *envp[])
 	if (!data.cmd_paths)
 		pipe_free(&data);
 	loop_pipe(data, argv, envp, argc);
-	close_pipes(&data, argc - 3 + data.heredoc);
-	while (i++ < (argc - 3 + data.heredoc))
+	close_pipes(&data, argc - 3 - data.heredoc);
+	while (i++ < (argc - 3 - data.heredoc))
 		waitpid(0, NULL, 0);
 	parent_free(&data);
 	return (0);

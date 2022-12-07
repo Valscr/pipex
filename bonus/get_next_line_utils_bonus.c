@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 22:05:54 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/07 22:23:20 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/07 23:04:49 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	*ft_strjoin1(char *s1, char *s2)
 	while (s2[j] != '\0')
 		dest[i++] = s2[j++];
 	dest[i] = '\0';
-	free(s1);
+	if (s1)
+		free(s1);
 	return (dest);
 }

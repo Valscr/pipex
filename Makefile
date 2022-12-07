@@ -6,7 +6,7 @@
 #    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 14:55:08 by valentin          #+#    #+#              #
-#    Updated: 2022/12/07 22:17:11 by valentin         ###   ########.fr        #
+#    Updated: 2022/12/07 22:42:48 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@ NAME2 = pipex_bonus
 COLOUR_GREEN=\033[0;32m
 COLOUR_END=\033[0m
 
-C_FILES = pipex.c utils.c check_access.c
+C_FILES = pipex.c utils.c
 
 BONUS_DIR = ./bonus/
 
 BONUS_SRC = pipex_bonus.c utils_bonus.c error_bonus.c free_bonus.c \
-			check_access_bonus.c get_next_line_bonus.c here_doc_bonus.c \
+			 get_next_line_bonus.c here_doc_bonus.c \
 			get_next_line_utils_bonus.c
 
 DIR_OBJ = objs/
