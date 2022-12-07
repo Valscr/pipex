@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:15:17 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/01 02:45:10 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:57:22 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*get_cmd(char **paths, char *cmd)
 
 char	*find_path(char **envp)
 {
-	while (strncmp("PATH", *envp, 4))
+	while (ft_strncmp("PATH", *envp, 4))
 		envp++;
 	return (*envp + 5);
 }

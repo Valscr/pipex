@@ -6,7 +6,7 @@
 #    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 14:55:08 by valentin          #+#    #+#              #
-#    Updated: 2022/12/01 03:00:15 by valentin         ###   ########.fr        #
+#    Updated: 2022/12/07 22:17:11 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ C_FILES = pipex.c utils.c check_access.c
 BONUS_DIR = ./bonus/
 
 BONUS_SRC = pipex_bonus.c utils_bonus.c error_bonus.c free_bonus.c \
-			check_access_bonus.c
+			check_access_bonus.c get_next_line_bonus.c here_doc_bonus.c \
+			get_next_line_utils_bonus.c
 
 DIR_OBJ = objs/
 
@@ -80,3 +81,5 @@ re:		fclean all
 
 norm:
 	norminette $(SRC_DIR)*.c $(BONUS_DIR)*.c include/*.h 
+
+.PHONY:         all clean fclean bonus re

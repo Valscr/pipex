@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:39:58 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/01 02:33:23 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:56:54 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 # include "../libft/libft.h"
+# include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
