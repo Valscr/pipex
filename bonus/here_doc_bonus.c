@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 22:10:16 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/07 23:43:48 by valentin         ###   ########.fr       */
+/*   Updated: 2022/12/08 01:06:25 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	check_heredoc(char *str, t_data *data)
 	int		i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	heredoc = malloc(sizeof(char) * 9);
 	ft_strlcpy(heredoc, "here_doc", 9);
 	data->heredoc = 0;
