@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:29:02 by vescaffr          #+#    #+#             */
-/*   Updated: 2023/01/17 23:11:06 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/17 23:36:33 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_error(char **argv, t_data *data)
 	dest = ft_split(argv[2], ' ');
 	if (!is_cmd(data->cmd_paths, dest[0]))
 	{
-		if (dest[0][0] != '\0')
+		if (dest[0] != NULL)
 			write_error(dest[0]);
 		write_error(": command not found\n");
 		i++;
@@ -52,7 +52,7 @@ int	check_error(char **argv, t_data *data)
 	dest = ft_split(argv[3], ' ');
 	if (!is_cmd(data->cmd_paths, dest[0]))
 	{
-		if (dest[0][0] != '\0')
+		if (dest[0] != NULL)
 			write_error(dest[0]);
 		write_error(": command not found\n");
 		i++;
@@ -86,7 +86,7 @@ int	is_cmd(char **paths, char *cmd)
 	if (paths == NULL)
 		return (0);
 	while (*paths)
-	{	
+	{
 		tmp = ft_strjoin(*paths, "/");
 		command = ft_strjoin(tmp, cmd);
 		free(tmp);
