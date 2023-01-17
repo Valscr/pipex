@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2022/12/01 02:45:17 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:58:44 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	write_error(char *str)
 {
 	while (*str)
 		write(2, str++, 1);
-	return (0);
+	return (1);
 }
 
 int	write_perror(char *str)
 {
 	perror(str);
-	return (0);
+	return (1);
 }
 
 void	first_child(t_data data, char *argv[], char *envp[])
@@ -34,13 +34,12 @@ void	first_child(t_data data, char *argv[], char *envp[])
 	data.cmd = get_cmd(data.cmd_paths, data.cmd_args[0]);
 	if (!data.cmd)
 	{
-		if (argv[2][0] != '\0')
-			write_error(data.cmd_args[0]);
-		write_error(": command not found\n");
 		child_free(&data);
 		parent_free(&data);
 		exit(1);
 	}
+	if (data.infile < 0)
+		exit (1);
 	execve(data.cmd, data.cmd_args, envp);
 }
 
@@ -53,32 +52,31 @@ void	second_child(t_data data, char *argv[], char *envp[])
 	data.cmd = get_cmd(data.cmd_paths, data.cmd_args[0]);
 	if (!data.cmd)
 	{
-		if (argv[3][0] != '\0')
-			write_error(data.cmd_args[0]);
-		write_error(": command not found\n");
 		child_free(&data);
 		parent_free(&data);
 		exit(1);
 	}
-	execve(data.cmd, data.cmd_args, envp);
+	if (data.infile < 0)
+		exit (1);
+	if (execve(data.cmd, data.cmd_args, envp) == -1)
+		child_free(&data);
 }
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_data	data;
+	int		i;
 
 	if (argc != 5)
 		return (write_error("Invalid number of arguments.\n"));
-	data.infile = open(argv[1], O_RDONLY);
-	if (data.infile < 0)
-		return (write_perror(argv[1]));
-	data.outfile = open(argv[argc - 1], O_TRUNC | O_CREAT | O_RDWR, 0644);
-	if (data.outfile < 0)
-		return (write_error("Outfile error"));
+	open_file(argv, &data, argc);
+	if (!is_path(envp))
+		return (1);
 	if (pipe(data.tube) < 0)
 		return (write_error("Error\n"));
 	data.paths = find_path(envp);
 	data.cmd_paths = ft_split(data.paths, ':');
+	i = check_error(argv, &data);
 	data.pid1 = fork();
 	if (data.pid1 == 0)
 		first_child(data, argv, envp);
@@ -89,5 +87,5 @@ int	main(int argc, char *argv[], char *envp[])
 	waitpid(0, NULL, 0);
 	waitpid(0, NULL, 0);
 	parent_free(&data);
-	return (0);
+	return (i);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
+#    By: vescaffr <vescaffr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 14:55:08 by valentin          #+#    #+#              #
-#    Updated: 2022/12/07 22:42:48 by valentin         ###   ########.fr        #
+#    Updated: 2023/01/16 17:42:56 by vescaffr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME2 = pipex_bonus
 COLOUR_GREEN=\033[0;32m
 COLOUR_END=\033[0m
 
-C_FILES = pipex.c utils.c
+C_FILES = pipex.c utils.c utils2.c utils3.c
 
 BONUS_DIR = ./bonus/
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vescaffr <vescaffr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:39:58 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/07 22:43:24 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:43:30 by vescaffr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,12 @@ char		*get_cmd(char **paths, char *cmd);
 void		first_child(t_data data, char *argv[], char *envp[]);
 void		second_child(t_data data, char *argv[], char *envp[]);
 int			write_error(char *str);
+int			write_perror(char *str);
+int			free_tab_str(char **str);
+int			check_return(int i);
+int			check_error(char **argv, t_data *data);
+void		open_file(char **argv, t_data *data, int argc);
+int			is_cmd(char **paths, char *cmd);
+int			is_path(char **envp);
 
 #endif
