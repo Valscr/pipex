@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:15:17 by valentin          #+#    #+#             */
-/*   Updated: 2023/01/17 16:52:04 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/17 23:20:51 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ char	*get_cmd(char **paths, char *cmd)
 
 	if (cmd == NULL)
 		return (NULL);
+	if (access(cmd, 0) == 0)
+		return (cmd);
+	if (paths == NULL)
+		return (NULL);
 	while (*paths)
 	{
-		if (access(cmd, 0) == 0)
-			return (cmd);
 		tmp = ft_strjoin(*paths, "/");
 		command = ft_strjoin(tmp, cmd);
 		free(tmp);
@@ -36,6 +38,8 @@ char	*get_cmd(char **paths, char *cmd)
 
 char	*find_path(char **envp)
 {
+	if (!is_path(envp))
+		return (NULL);
 	while (ft_strncmp("PATH", *envp, 4))
 		envp++;
 	return (*envp + 5);
@@ -55,6 +59,8 @@ void	parent_free(t_data *data)
 	if (data->infile > 0)
 		close(data->infile);
 	close(data->outfile);
+	if (data->cmd_paths == NULL)
+		return ;
 	while (data->cmd_paths[i])
 	{
 		free(data->cmd_paths[i]);

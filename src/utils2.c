@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:29:02 by vescaffr          #+#    #+#             */
-/*   Updated: 2023/01/17 17:42:09 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/17 23:11:06 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,12 @@ int	is_cmd(char **paths, char *cmd)
 
 	if (cmd == NULL || cmd[0] == 0)
 		return (0);
+	if (access(cmd, X_OK) == 0)
+		return (1);
+	if (paths == NULL)
+		return (0);
 	while (*paths)
-	{
-		if (access(cmd, X_OK) == 0)
-			return (1);
+	{	
 		tmp = ft_strjoin(*paths, "/");
 		command = ft_strjoin(tmp, cmd);
 		free(tmp);

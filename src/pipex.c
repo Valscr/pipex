@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2023/01/17 17:50:42 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/17 23:16:35 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	first_child(t_data data, char *argv[], char *envp[])
 		parent_free(&data);
 		exit(1);
 	}
-	if (data.infile < 0)
-		exit (1);
 	execve(data.cmd, data.cmd_args, envp);
 }
 
@@ -72,12 +70,13 @@ int	main(int argc, char *argv[], char *envp[])
 	if (argc != 5)
 		return (write_error("Invalid number of arguments.\n"));
 	open_file(argv, &data, argc);
-	if (!is_path(envp))
-		return (1);
 	if (pipe(data.tube) < 0)
 		return (write_error("Error\n"));
 	data.paths = find_path(envp);
-	data.cmd_paths = ft_split(data.paths, ':');
+	if (data.paths != NULL)
+		data.cmd_paths = ft_split(data.paths, ':');
+	else
+		data.cmd_paths = NULL;
 	i = check_error(argv, &data);
 	data.pid1 = fork();
 	if (data.pid1 == 0)
