@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vescaffr <vescaffr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:29:02 by vescaffr          #+#    #+#             */
-/*   Updated: 2023/01/16 17:32:46 by vescaffr         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:42:09 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_error(char **argv, t_data *data)
 		i++;
 	}
 	free_tab_str(dest);
-	if (data->infile < 0)
+	if (open(argv[1], O_RDONLY) < 0)
 		i++;
 	return (check_return(i));
 }

@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2023/01/17 15:58:44 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:50:42 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	write_perror(char *str)
 
 void	first_child(t_data data, char *argv[], char *envp[])
 {
+	if (data.infile < 0)
+	{
+		parent_free(&data);
+		exit (1);
+	}
 	dup2(data.tube[1], 1);
 	close(data.tube[0]);
 	dup2(data.infile, 0);
@@ -56,10 +61,7 @@ void	second_child(t_data data, char *argv[], char *envp[])
 		parent_free(&data);
 		exit(1);
 	}
-	if (data.infile < 0)
-		exit (1);
-	if (execve(data.cmd, data.cmd_args, envp) == -1)
-		child_free(&data);
+	execve(data.cmd, data.cmd_args, envp);
 }
 
 int	main(int argc, char *argv[], char *envp[])

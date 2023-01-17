@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vescaffr <vescaffr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:39:58 by valentin          #+#    #+#             */
-/*   Updated: 2023/01/16 17:43:30 by vescaffr         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:41:20 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data {
 	int			tube[2];
 	int			infile;
 	int			outfile;
+	int			file;
 	char		**str;
 	char		**str2;
 	char		**cmd_args;

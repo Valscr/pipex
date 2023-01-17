@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vescaffr <vescaffr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:15:17 by valentin          #+#    #+#             */
-/*   Updated: 2023/01/16 17:29:18 by vescaffr         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:52:04 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	parent_free(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->infile >= 0)
+	if (data->infile > 0)
 		close(data->infile);
 	close(data->outfile);
 	while (data->cmd_paths[i])
