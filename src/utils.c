@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:15:17 by valentin          #+#    #+#             */
-/*   Updated: 2023/01/17 23:20:51 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:56:11 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	parent_free(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->infile > 0)
+	if (data->infile >= 0)
 		close(data->infile);
 	close(data->outfile);
 	if (data->cmd_paths == NULL)

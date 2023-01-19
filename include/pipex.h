@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:39:58 by valentin          #+#    #+#             */
-/*   Updated: 2023/01/17 16:41:20 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/19 00:06:24 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ int			write_perror(char *str);
 int			free_tab_str(char **str);
 int			check_return(int i);
 int			check_error(char **argv, t_data *data);
-void		open_file(char **argv, t_data *data, int argc);
+int			open_file(char **argv, t_data *data, int argc);
 int			is_cmd(char **paths, char *cmd);
 int			is_path(char **envp);
+void		wait_fonct(t_data data);
 
 #endif

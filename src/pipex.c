@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2023/01/17 23:16:35 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:59:07 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	first_child(t_data data, char *argv[], char *envp[])
 	data.cmd = get_cmd(data.cmd_paths, data.cmd_args[0]);
 	if (!data.cmd)
 	{
+		if (argv[2][0] != '\0')
+			write(2, data.cmd_args[0], ft_strlen(data.cmd_args[0]));
+		write(2, ": command not found\n", 21);
 		child_free(&data);
 		parent_free(&data);
 		exit(1);
@@ -55,6 +58,9 @@ void	second_child(t_data data, char *argv[], char *envp[])
 	data.cmd = get_cmd(data.cmd_paths, data.cmd_args[0]);
 	if (!data.cmd)
 	{
+		if (argv[3][0] != '\0')
+			write(2, data.cmd_args[0], ft_strlen(data.cmd_args[0]));
+		write(2, ": command not found\n", 21);
 		child_free(&data);
 		parent_free(&data);
 		exit(1);
@@ -69,7 +75,8 @@ int	main(int argc, char *argv[], char *envp[])
 
 	if (argc != 5)
 		return (write_error("Invalid number of arguments.\n"));
-	open_file(argv, &data, argc);
+	if (open_file(argv, &data, argc))
+		return (1);
 	if (pipe(data.tube) < 0)
 		return (write_error("Error\n"));
 	data.paths = find_path(envp);
@@ -84,9 +91,6 @@ int	main(int argc, char *argv[], char *envp[])
 	data.pid2 = fork();
 	if (data.pid2 == 0)
 		second_child(data, argv, envp);
-	close_pipes(&data);
-	waitpid(0, NULL, 0);
-	waitpid(0, NULL, 0);
-	parent_free(&data);
+	wait_fonct(data);
 	return (i);
 }

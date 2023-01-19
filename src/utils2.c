@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:29:02 by vescaffr          #+#    #+#             */
-/*   Updated: 2023/01/17 23:36:33 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:44:05 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,36 +42,26 @@ int	check_error(char **argv, t_data *data)
 	i = 0;
 	dest = ft_split(argv[2], ' ');
 	if (!is_cmd(data->cmd_paths, dest[0]))
-	{
-		if (dest[0] != NULL)
-			write_error(dest[0]);
-		write_error(": command not found\n");
 		i++;
-	}
 	free_tab_str(dest);
 	dest = ft_split(argv[3], ' ');
 	if (!is_cmd(data->cmd_paths, dest[0]))
-	{
-		if (dest[0] != NULL)
-			write_error(dest[0]);
-		write_error(": command not found\n");
 		i++;
-	}
 	free_tab_str(dest);
 	if (open(argv[1], O_RDONLY) < 0)
 		i++;
 	return (check_return(i));
 }
 
-void	open_file(char **argv, t_data *data, int argc)
+int	open_file(char **argv, t_data *data, int argc)
 {
 	data->infile = open(argv[1], O_RDONLY);
 	if (data->infile < 0)
 		write_perror(argv[1]);
 	data->outfile = open(argv[argc - 1], O_TRUNC | O_CREAT | O_RDWR, 0644);
 	if (data->outfile < 0)
-		write_error("Outfile error");
-	return ;
+		return (write_error("Outfile error"));
+	return (0);
 }
 
 int	is_cmd(char **paths, char *cmd)

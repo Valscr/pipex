@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vescaffr <vescaffr@student.42.fr>          +#+  +:+       +#+         #
+#    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 14:55:08 by valentin          #+#    #+#              #
-#    Updated: 2023/01/16 17:42:56 by vescaffr         ###   ########.fr        #
+#    Updated: 2023/01/18 15:28:02 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ BONUS_DIR = ./bonus/
 
 BONUS_SRC = pipex_bonus.c utils_bonus.c error_bonus.c free_bonus.c \
 			 get_next_line_bonus.c here_doc_bonus.c \
-			get_next_line_utils_bonus.c
+			get_next_line_utils_bonus.c utils2_bonus.c
 
 DIR_OBJ = objs/
 

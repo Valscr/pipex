@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:15:17 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/08 01:43:54 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/19 00:57:35 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ char	*get_cmd(char **paths, char *cmd)
 
 	if (cmd == NULL)
 		return (NULL);
+	if (access(cmd, 0) == 0)
+		return (cmd);
+	if (paths == NULL)
+		return (NULL);
 	while (*paths)
 	{
-		if (access(cmd, X_OK) == 0)
-			return (cmd);
 		tmp = ft_strjoin(*paths, "/");
 		command = ft_strjoin(tmp, cmd);
 		free(tmp);
@@ -36,6 +38,8 @@ char	*get_cmd(char **paths, char *cmd)
 
 char	*find_path(char **envp)
 {
+	if (!is_path(envp))
+		return (NULL);
 	while (ft_strncmp("PATH", *envp, 4))
 		envp++;
 	return (*envp + 5);
@@ -73,10 +77,13 @@ int	get_in_out(t_data *data, char **argv, int argc)
 	{
 		data->infile = open(argv[1], O_RDONLY);
 		if (data->infile < 0)
-			return (write_perror(argv[1]));
+			write_perror(argv[1]);
 		data->outfile = open(argv[argc - 1], O_TRUNC | O_CREAT | O_RDWR, 0644);
 		if (data->outfile < 0)
+		{
+			free(data->tube);
 			return (write_perror(argv[argc - 1]));
+		}
 	}
 	return (1);
 }

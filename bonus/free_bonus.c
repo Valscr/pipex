@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:04:33 by valentin          #+#    #+#             */
-/*   Updated: 2022/12/07 21:47:33 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:10:11 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ void	parent_free(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->tube)
-		free(data->tube);
-	close(data->infile);
+	free(data->tube);
+	if (data->infile >= 0)
+		close(data->infile);
 	close(data->outfile);
 	if (data->heredoc)
 		unlink(".heredoc_tmp");
+	if (data->cmd_paths == NULL)
+		return ;
 	while (data->cmd_paths[i])
 	{
 		free(data->cmd_paths[i]);
@@ -53,4 +55,19 @@ void	child_free(char **cmd_args, char *cmd)
 	}
 	free(cmd_args);
 	free(cmd);
+}
+
+int	free_tab_str(char **str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i] != NULL)
+	{
+		free(str[i++]);
+	}
+	free(str);
+	return (0);
 }
