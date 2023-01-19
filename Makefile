@@ -6,7 +6,7 @@
 #    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 14:55:08 by valentin          #+#    #+#              #
-#    Updated: 2023/01/19 13:29:11 by valentin         ###   ########.fr        #
+#    Updated: 2023/01/19 14:11:41 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ $(NAME2): ${OBJS2} maker
 
 $(DIR_OBJ)%.o : $(SRC_DIR)%.c
 		@mkdir -p $(DIR_OBJ)
-		@$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
+		$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
 
 $(DIR_OBJ2)%.o : $(BONUS_DIR)%.c
 		@mkdir -p $(DIR_OBJ2)
