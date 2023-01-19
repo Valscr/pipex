@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 01:36:01 by vescaffr          #+#    #+#             */
-/*   Updated: 2022/08/21 00:11:56 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:55:47 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ char	**ft_split(char *s, char c)
 
 	i = 0;
 	j = 0;
+	if (!s)
+		return (0);
 	dest = malloc(sizeof(char *) * (ft_countdest(s, c) + 1));
-	if (!dest || !s)
+	if (!dest)
 		return (0);
 	while (s[i] != '\0')
 	{
@@ -77,10 +79,7 @@ char	**ft_split(char *s, char c)
 		while (s[i] != c && s[i] != '\0')
 			i++;
 		if (i != 0)
-		{
-			dest[j] = ft_filldest(s, i - n, i);
-			j++;
-		}
+			dest[j++] = ft_filldest(s, i - n, i);
 		while (s[i] == c && s[i] != '\0')
 			i++;
 	}
