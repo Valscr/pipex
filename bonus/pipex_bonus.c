@@ -6,7 +6,7 @@
 /*   By: valentin <valentin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:22:18 by vescaffr          #+#    #+#             */
-/*   Updated: 2023/01/19 00:58:03 by valentin         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:23:46 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	child(t_data *data, char **argv, char *envp[])
 		parent_free(data);
 		exit(1);
 	}
-	printf("ok   ");
 	execve(cmd, cmd_args, envp);
 }
 

@@ -6,7 +6,7 @@
 #    By: valentin <valentin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 14:55:08 by valentin          #+#    #+#              #
-#    Updated: 2023/01/18 15:28:02 by valentin         ###   ########.fr        #
+#    Updated: 2023/01/19 13:29:11 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME2 = pipex_bonus
 COLOUR_GREEN=\033[0;32m
 COLOUR_END=\033[0m
 
-C_FILES = pipex.c utils.c utils2.c utils3.c
+C_FILES = pipex.c utils.c utils2.c free.c
 
 BONUS_DIR = ./bonus/
 
